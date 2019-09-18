@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import *
+from .forms import *
+
+
 # Create your views here.
 def index(request):
-    return HttpResponse("Esta es mi primera vista")
+    return render(request,'base.html',{})
