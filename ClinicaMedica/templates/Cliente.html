@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Informacion de cliente{% endblock %}
+{% block contenido %}
+    <h1>Informacion de cliente</h1></br>
+		<table summary="ListaMascotas" class = "table">
+            {% for Cliente in ListaClientes %}
+            <tr>
+                <th>CUI</th>
+                <td>{{ Cliente.cui }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ Cliente.user.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ Cliente.user.last_name }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ Cliente.user.username }}</td>
+            </tr>
+            <tr>
+                <th>Correo electronico</th>
+                <td>{{ Cliente.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de unido</th>
+                <td>{{ Cliente.user.date_joined }}</td>
+            </tr>
+            <tr></tr>
+            {% endfor %}			
+		</table>	
+{% endblock %}

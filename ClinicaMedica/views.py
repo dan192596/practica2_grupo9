@@ -4,13 +4,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from .forms import ExtendedUserCreationForm, UserProfileForm, form_doctor_grade
+from .forms import ExtendedUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from .models import ClientProfile
 # Create your views here.
 def index(request):
     return HttpResponse("Esta es mi primera vista")
-
-
 
 @login_required
 def index(request):
@@ -52,5 +51,5 @@ def register(request):
     return  render(request, 'register.html', context)
 
 def ListaClientes(request):
-    ListaClientes = ClientProfile.objects.values('user','cui').distinct()
-    return render(request, 'ListaCliente/Read_Mascotas.html', {'ListaClientes':ListaClientes})
+    ListaClientes = ClientProfile.objects.values('user', 'cui').distinct()
+    return render(request, 'ListaClientes.html', {'ListaClientes':ListaClientes})

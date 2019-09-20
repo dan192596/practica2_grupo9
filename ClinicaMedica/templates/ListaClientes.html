@@ -1,19 +1,23 @@
-{% extends 'cal/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Lista de clientes{% endblock %}
 
-{% block content %}
+{% block contenido %}
 	<h1>Lista de clientes</h1></br>	
 		<table summary="ListaClientes" class = "table">
 			<tr>
 				<th>CUI</th>
                 <th>Nombre</th>
+                <th>Apellido</th>                
+                <th>Username</th>
                 <th>Opciones</th>
 			</tr>
 			{% for Cliente in ListaClientes %}
 				<tr>
 					<td>{{ Cliente.cui }}</td>
-					<td></td>
+                    <td>{{ Cliente.user.first_name}}</td>
+                    <td>{{ Cliente.user.last_name}}</td>
+                    <td>{{ Cliente.user.username}}</td>
 					<td></td>					
 				</tr>
 			{% endfor %}

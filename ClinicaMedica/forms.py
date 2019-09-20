@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import ClientProfile
+from django import forms
 
 class ExtendedUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
