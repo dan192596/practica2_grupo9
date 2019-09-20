@@ -53,3 +53,7 @@ def register(request):
 def ListaClientes(request):
     ListaClientes = ClientProfile.objects.values('user', 'cui').distinct()
     return render(request, 'ListaClientes.html', {'ListaClientes':ListaClientes})
+
+def InfoCliente(request, codigo):
+    ListaClientes = ClientProfile.objects.filter(cui=codigo).distinct()
+    return render(request, 'Cliente.html', {'ListaClientes':ListaClientes})
