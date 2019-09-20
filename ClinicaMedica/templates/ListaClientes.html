@@ -1,0 +1,21 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}Lista de clientes{% endblock %}
+
+{% block content %}
+	<h1>Lista de clientes</h1></br>	
+		<table summary="ListaClientes" class = "table">
+			<tr>
+				<th>CUI</th>
+                <th>Nombre</th>
+                <th>Opciones</th>
+			</tr>
+			{% for Cliente in ListaClientes %}
+				<tr>
+					<td>{{ Cliente.cui }}</td>
+					<td></td>
+					<td></td>					
+				</tr>
+			{% endfor %}
+		</table>	
+{% endblock %}
