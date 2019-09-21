@@ -10,5 +10,4 @@ class ClientProfile(models.Model):
     phone = models.IntegerField()
     cui = models.IntegerField()
 
-    def __str__(self):
-        return self.user.username
+    
