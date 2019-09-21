@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Lista de clientes{% endblock %}
+{% block contenido %}
+    
+    <table class="form form-table">
+            <form method="post" >
+                    {% csrf_token %}
+                    {{form}}         
+                    <tr><td colspan="2"><button type="submit" class="btn btn-info right"  href="">Registrar Atencion</button></td></tr>
+                </form>
+    </table>
+{% endblock %}
