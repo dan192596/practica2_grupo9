@@ -56,9 +56,9 @@ def createUser(request):
     return render(request,"nuevo_usuario.html",context)
 
 def updateUser(request):
-        list = User.objects.all()
-        context = {'list':list}
-        return render(request,"update_usuario.html",context)
+    list = User.objects.all()
+    context = {'list':list}
+    return render(request,"update_usuario.html",context)
 
 def deleteUser(request):
     if request.POST:

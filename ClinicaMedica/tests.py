@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from .models import ClientProfile
+from .models import ClientProfile, TypeUser
 from .forms import *
 import json
 from django.urls import reverse, resolve
@@ -17,6 +17,10 @@ class TestURLS(TestCase):
         self.profile_url= reverse('CM:perfil')
         self.login_url = reverse('CM:login')
         self.logout_url = reverse('CM:logout')
+        self.admin_url = reverse('CM:home_admin')
+        self.new_user_url = reverse('CM:create_user')
+        self.update_user_url = reverse('CM:update_user')
+        self.delete_user_url = reverse('CM:delete_user')
         self.user = User.objects.create(
                username="gary",
                email="gary@gmail.com", 
@@ -46,14 +50,6 @@ class TestURLS(TestCase):
     def test_logout_page(self):
         response = self.client.get(self.logout_url)
         self.assertEquals(response.status_code,302)
-
-    def test_UserProfileForm_valid(self):
-        form = UserProfileForm(data={
-              'address':"guatemala",
-              'phone':122334,
-              'cui':444551,
-              'type':4})
-        self.assertTrue(form.is_valid())
 
     # Invalid Form Data
     def test_UserProfileForm_invalid(self):
@@ -90,10 +86,45 @@ class TestURLS(TestCase):
         field_label = user._meta.get_field('username').verbose_name
         self.assertEquals(field_label, 'username')
 
+    def test_first_name_label(self):
+        user = User.objects.get(id=1)
+        field_label = user._meta.get_field('first_name').verbose_name
+        self.assertEquals(field_label,'first name')
+
     def test_get_username_field(self):
         user = User.objects.get(id=1)
         expected_object_name = user.username
         self.assertEquals(expected_object_name, str(user))
+
+    def test_get_home_admin_page(self):
+        response = self.client.get(self.admin_url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'homeAdmin.html')
+
+    def test_get_create_user_admin_page(self):
+        response = self.client.get(self.new_user_url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'nuevo_usuario.html')
+
+    def test_get_update_user_admin_page(self):
+        response = self.client.get(self.update_user_url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'update_usuario.html')
+
+    def test_get_delete_user_admin_page(self):
+        response = self.client.get(self.delete_user_url)
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'delete_user.html')
+        
+    def test_TypeUser_create(self):
+        self.type_user = TypeUser(nameType="test")
+        self.type_user.save()
+
+    def test_delete_user(self):
+        response = self.client.post(self.delete_user_url,{
+            'delete_value':1,
+        })
+        self.assertEquals(response.status_code,200)
 
 
 def test_InfoCliente_is_resolved(self):
