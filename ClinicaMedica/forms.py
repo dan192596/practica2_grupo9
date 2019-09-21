@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import ClientProfile
-
+from django import forms
 class ExtendedUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=50)
@@ -22,3 +22,7 @@ class ExtendedUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+class UserProfileForm(ModelForm):
+    class Meta:
+        model = ClientProfile
+        fields = {'address', 'phone'}

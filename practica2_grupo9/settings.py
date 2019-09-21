@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ClinicaMedica',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -120,5 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-LOGIN_REDIRECT_URL = reverse_lazy('')
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('CM:perfil')
+LOGOUT_REDIRECT_URL =  reverse_lazy('CM:index')

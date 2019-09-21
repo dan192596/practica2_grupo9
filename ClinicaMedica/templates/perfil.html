@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+{% block title %}INICIO{% endblock %}
+
+{% block inicio%}
+        {%if user.is_authenticated %}
+            
+            <li class="nav-item active">
+                <a class="nav-link">USUARIO : {{username}}</a>
+            </li>
+            <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'CM:logout' %}">SALIR</a>
+            </li>
+            
+        
+
+        {% else %}
+
+           
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'CM:login' %}">LOGIN USUARIO</a>
+            </li>
+        
+
+        {% endif %}
+
+{% endblock %}
