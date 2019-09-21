@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 from django.contrib.auth.models import User
@@ -9,5 +10,8 @@ class ClientProfile(models.Model):
     address = models.CharField(max_length=200)
     phone = models.IntegerField()
     cui = models.IntegerField()
+    type = models.IntegerField()
 
-    
+#Modelo de usuarios doctores
+class TypeUser(models.Model):
+    nameType = models.CharField(max_length=50)

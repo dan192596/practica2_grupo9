@@ -25,7 +25,7 @@ class TestURLS(TestCase):
                password="garyortiz"
                )
         user = User.objects.create(email="garyjoan@gmail.com",username="garyjoan")
-        self.create_user = ClientProfile(user=user,address="guatemala", phone=12345)
+        self.create_user = ClientProfile(user=user,address="guatemala", phone=12345, cui=123454984983, type=4)
         self.create_user.save() 
 
     def test_index_page(self):
@@ -50,7 +50,9 @@ class TestURLS(TestCase):
     def test_UserProfileForm_valid(self):
         form = UserProfileForm(data={
               'address':"guatemala",
-              'phone':122334})
+              'phone':122334,
+              'cui':444551,
+              'type':4})
         self.assertTrue(form.is_valid())
 
     # Invalid Form Data
@@ -71,6 +73,7 @@ class TestURLS(TestCase):
             'password2':"garyjoan09"
         })
         self.assertTrue(form.is_valid())
+
     def test_ExtendedUserCreationForm_invalid(self):
         form = ExtendedUserCreationForm(data={
             'username':"garyJK",
@@ -93,9 +96,7 @@ class TestURLS(TestCase):
         self.assertEquals(expected_object_name, str(user))
 
 
-
-
-
 def test_InfoCliente_is_resolved(self):
     url = reverse('CM:InfoCliente')
     self.assertEquals(resolve(url).url_name,'InfoCliente')
+

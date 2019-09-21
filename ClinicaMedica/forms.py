@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import ClientProfile
 from django import forms
+
+
+
 class ExtendedUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(max_length=50)
@@ -22,7 +25,17 @@ class ExtendedUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+TYPE_USER_CHOICES =[
+    (1,'Administrador'),
+    (2,'Doctor'),
+    (3,'Secretaria'),
+    (4,'Paciente')
+]
+
 class UserProfileForm(ModelForm):
     class Meta:
         model = ClientProfile
-        fields = {'address', 'phone'}
+        fields = {'address', 'phone','cui','type'}
+
+        widgets={'type':forms.Select(choices=TYPE_USER_CHOICES)}
