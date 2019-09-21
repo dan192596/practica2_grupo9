@@ -104,17 +104,17 @@ class TestURLS(TestCase):
     def test_get_create_user_admin_page(self):
         response = self.client.get(self.new_user_url)
         self.assertEquals(response.status_code,200)
-        self.assertTemplateUsed(response, 'nuevo_usuario.html')
+        self.assertTemplateUsed(response, 'newUserAdmin.html')
 
     def test_get_update_user_admin_page(self):
         response = self.client.get(self.update_user_url)
         self.assertEquals(response.status_code,200)
-        self.assertTemplateUsed(response, 'update_usuario.html')
+        self.assertTemplateUsed(response, 'updateUserAdmin.html')
 
     def test_get_delete_user_admin_page(self):
         response = self.client.get(self.delete_user_url)
         self.assertEquals(response.status_code,200)
-        self.assertTemplateUsed(response, 'delete_user.html')
+        self.assertTemplateUsed(response, 'deleteUserAdmin.html')
         
     def test_TypeUser_create(self):
         self.type_user = TypeUser(nameType="test")

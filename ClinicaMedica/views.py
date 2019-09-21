@@ -53,12 +53,12 @@ def createUser(request):
         profile_form = UserProfileForm()
 
     context = {'form': form, 'profile_form': profile_form}
-    return render(request,"nuevo_usuario.html",context)
+    return render(request,"newUserAdmin.html",context)
 
 def updateUser(request):
     list = User.objects.all()
     context = {'list':list}
-    return render(request,"update_usuario.html",context)
+    return render(request,"updateUserAdmin.html",context)
 
 def deleteUser(request):
     if request.POST:
@@ -67,4 +67,4 @@ def deleteUser(request):
     
     list = User.objects.all()
     context = {'list':list}
-    return render(request,"delete_user.html",context)
+    return render(request,"deleteUserAdmin.html",context)
