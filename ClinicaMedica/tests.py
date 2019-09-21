@@ -9,6 +9,13 @@ def test_ListaClientes_is_resolved(self):
     url = reverse('CM:ListaClientes')
     self.assertEquals(resolve(url).url_name,'ListaClientes')
 
+def test_InfoCliente_is_resolved(self):
+    url = reverse('CM:InfoCliente')
+    self.assertEquals(resolve(url).url_name,'InfoCliente')
+
+def test_InfoCita_is_resolved(self):
+    url = reverse('CM:InfoCita')
+    self.assertEquals(resolve(url).url_name,'InfoCita')
 
 class TestURLS(TestCase):
     def setUp(self):
@@ -91,11 +98,3 @@ class TestURLS(TestCase):
         user = User.objects.get(id=1)
         expected_object_name = user.username
         self.assertEquals(expected_object_name, str(user))
-
-
-
-
-
-def test_InfoCliente_is_resolved(self):
-    url = reverse('CM:InfoCliente')
-    self.assertEquals(resolve(url).url_name,'InfoCliente')

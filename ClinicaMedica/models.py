@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 #Modelo para el login
 class ClientProfile(models.Model):
@@ -10,4 +11,16 @@ class ClientProfile(models.Model):
     phone = models.IntegerField()
     cui = models.IntegerField()
 
-    
+
+class Cita(models.Model):
+    cui = models.IntegerField()
+    description = models.TextField()
+    sintomas = models.TextField()
+    prescripcion = models.TextField()
+    fecha = models.DateField()
+    hora = models.TimeField()
+
+    @property
+    def get_html_url(self):
+        url = reverse('CM:InfoCita', args=(self.id,))
+        return f'<a href="{url}"> {self.cui} </a>'
