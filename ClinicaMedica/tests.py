@@ -136,12 +136,6 @@ class TestURLS(TestCase):
         })
         self.assertEquals(response.status_code,200)
 
-
-def test_InfoCliente_is_resolved(self):
-    url = reverse('CM:InfoCliente')
-    self.assertEquals(resolve(url).url_name,'InfoCliente')
-
-
     def test_ListaClientes_page(self):
         response = self.client.get(reverse('CM:ListaClientes'))
         self.assertEquals(response.status_code,200)
