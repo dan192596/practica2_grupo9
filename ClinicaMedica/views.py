@@ -33,6 +33,7 @@ def InfoCita(request):
     if request.method == "POST":
         form = CitaForm(request.POST)
         if form.is_valid():
+            print(form.data)            
             form.save()
             return HttpResponseRedirect(reverse('CM:index'))
     else: 

@@ -11,6 +11,7 @@ class TestURLS(TestCase):
         self.profile_url= reverse('CM:perfil')
         self.login_url = reverse('CM:login')
         self.logout_url = reverse('CM:logout')
+        
         self.user = User.objects.create(
                username="gary",
                email="gary@gmail.com", 
@@ -93,3 +94,23 @@ class TestURLS(TestCase):
     def test_InfoCita_is_resolved(self):
         url = reverse('CM:InfoCita')
         self.assertEquals(resolve(url).url_name,'InfoCita')
+    def test_CitaForm_valid(self):
+        form = CitaForm(data={
+            'cui': "2488258790101", 
+            'description': "Esta es la descripcion", 
+            'sintomas': "Estos son los sintomas", 
+            'prescripcion': "Esta es la prescipcion", 
+            'fecha': "2019-09-20", 
+            'hora': "01:00"
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_ListaClientes_page(self):
+        response = self.client.get(reverse('CM:ListaClientes'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'ListaClientes.html')
+    
+    def test_InfoCita_page(self):
+        response = self.client.get(reverse('CM:InfoCita'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response, 'Cita.html')
