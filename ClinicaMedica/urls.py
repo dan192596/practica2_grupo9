@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name="login"),
     url(r'^ListaClientes/$', views.ListaClientes, name='ListaClientes'),
     url(r'^Cliente/(?P<codigo>.+)$', views.InfoCliente, name='InfoCliente'),
+    url(r'^InfoCita$', views.InfoCita, name='InfoCita'),
 ]
