@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+{% block title %}Login{% endblock %}
+
+{% block contenido%}
+<div class='row'>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+           
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+    </div>
+    <div class='row'>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group clearfix">
+                    <label  class="col-md-5 control-label text-left">Usuario:<span class="text-red">*</span>:</label>
+                        <select name="delete_value">
+                            {% for item in list %}
+                            <option value="{{item.id}}">{{item.username}}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit" name="delete">Eliminar</button>
+            </form>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+    </div>
+{% endblock %}

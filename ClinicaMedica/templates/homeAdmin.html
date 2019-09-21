@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+{% block title %}Login{% endblock %}
+
+{% block contenido%}
+<div class='row'>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+           
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4'></div>
+    </div>
+    <div class='row'>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+            <button onclick="location.href='{% url 'CM:create_user' %}'" class="btn btn-primary btn-lg btn-block">Nuevo Usuario</button>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+            <button onclick="location.href='{% url 'CM:update_user' %}'" class="btn btn-primary btn-lg btn-block">Actualizar Usuario</button>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4'>
+            <button onclick="location.href='{% url 'CM:delete_user' %}'" class="btn btn-primary btn-lg btn-block">Eliminar Usuario</button>
+        </div>
+    </div>
+{% endblock %}
