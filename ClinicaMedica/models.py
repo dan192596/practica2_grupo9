@@ -19,8 +19,3 @@ class Cita(models.Model):
     prescripcion = models.TextField()
     fecha = models.DateField()
     hora = models.TimeField()
-
-    @property
-    def get_html_url(self):
-        url = reverse('CM:InfoCita', args=(self.id,))
-        return f'<a href="{url}"> {self.cui} </a>'

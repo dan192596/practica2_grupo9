@@ -4,19 +4,6 @@ from .forms import *
 import json
 from django.urls import reverse, resolve
 
-# Create your tests here.
-def test_ListaClientes_is_resolved(self):
-    url = reverse('CM:ListaClientes')
-    self.assertEquals(resolve(url).url_name,'ListaClientes')
-
-def test_InfoCliente_is_resolved(self):
-    url = reverse('CM:InfoCliente')
-    self.assertEquals(resolve(url).url_name,'InfoCliente')
-
-def test_InfoCita_is_resolved(self):
-    url = reverse('CM:InfoCita')
-    self.assertEquals(resolve(url).url_name,'InfoCita')
-
 class TestURLS(TestCase):
     def setUp(self):
         self.client = Client()
@@ -32,7 +19,7 @@ class TestURLS(TestCase):
                password="garyortiz"
                )
         user = User.objects.create(email="garyjoan@gmail.com",username="garyjoan")
-        self.create_user = ClientProfile(user=user,address="guatemala", phone=12345)
+        self.create_user = ClientProfile(user=user,address="guatemala", phone=12345, cui=123454984983)
         self.create_user.save() 
 
     def test_index_page(self):
@@ -98,3 +85,11 @@ class TestURLS(TestCase):
         user = User.objects.get(id=1)
         expected_object_name = user.username
         self.assertEquals(expected_object_name, str(user))
+
+    def test_ListaClientes_is_resolved(self):
+        url = reverse('CM:ListaClientes')        
+        self.assertEquals(resolve(url).url_name,'ListaClientes')
+
+    def test_InfoCita_is_resolved(self):
+        url = reverse('CM:InfoCita')
+        self.assertEquals(resolve(url).url_name,'InfoCita')

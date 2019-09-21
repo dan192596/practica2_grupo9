@@ -44,7 +44,7 @@ class CitaForm(ModelForm):
 
         self.fields['fecha'].input_formats = ('%Y-%m-%d',)
         self.fields['hora'].input_formats = ('%H:%M',)
-        self.fields['cui'].label = "Ingrese CUI:"
+        self.fields['cui'].label = "Ingrese CUI: "
         self.fields['description'].label = "Ingrese la descripcion de la cita: "
         self.fields['sintomas'].label = "Ingrese los sintomas del paciente: "
         self.fields['prescripcion'].label = "Ingrese la prescipcion realizada: "
