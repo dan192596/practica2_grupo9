@@ -31,5 +31,25 @@
             </tr>
             <tr></tr>
             {% endfor %}			
-		</table>	
+        </table>
+        {% for Cita in ListaCitas %}
+        <table summary="Citas" class = "table">                
+                <tr>
+                    <th>CUI</th>
+                    <th>Descripcion</th>
+                    <th>Sintomas</th>
+                    <th>Prescripcion</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                </tr>
+                    <td>{{ Cita.cui }}</td>
+                    <td>{{ Cita.description }}</td>
+                    <td>{{ Cita.sintomas }}</td>
+                    <td>{{ Cita.prescripcion }}</td>
+                    <td>{{ Cita.fecha }}</td>
+                    <td>{{ Cita.hora }}</td>
+                </tr>                
+        </table>
+        <br>
+        {% endfor %}
 {% endblock %}

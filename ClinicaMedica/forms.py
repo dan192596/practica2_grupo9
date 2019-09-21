@@ -36,3 +36,23 @@ class UserProfileForm(ModelForm):
         fields = {'address', 'phone','cui','type'}
 
         widgets={'type':forms.Select(choices=TYPE_USER_CHOICES)}
+
+
+class CitaForm(ModelForm):
+    class Meta:
+        model = Cita
+        widgets = {
+            'fecha': DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
+            'hora': TimeInput(attrs={'type': 'time'}, format='%H:%M'),
+        }
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(CitaForm, self).__init__(*args, **kwargs)    
+
+        self.fields['fecha'].input_formats = ('%Y-%m-%d',)
+        self.fields['hora'].input_formats = ('%H:%M',)
+        self.fields['cui'].label = "Ingrese CUI: "
+        self.fields['description'].label = "Ingrese la descripcion de la cita: "
+        self.fields['sintomas'].label = "Ingrese los sintomas del paciente: "
+        self.fields['prescripcion'].label = "Ingrese la prescipcion realizada: " 

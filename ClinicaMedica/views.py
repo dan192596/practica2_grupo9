@@ -29,7 +29,8 @@ def ListaClientes(request):
 
 def InfoCliente(request, codigo):
     ListaClientes = ClientProfile.objects.filter(cui=codigo).distinct()
-    return render(request, 'Cliente.html', {'ListaClientes':ListaClientes})
+    ListaCitas = Cita.objects.filter(cui=codigo).distinct()
+    return render(request, 'Cliente.html', {'ListaClientes':ListaClientes,'ListaCitas':ListaCitas})
 
 
 #ADMINISTRADOR
